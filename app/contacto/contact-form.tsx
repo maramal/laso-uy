@@ -217,6 +217,7 @@ export default function ContactForm() {
                                 <Button
                                     type="submit"
                                     className="bg-blue-600 hover:bg-blue-700 text-white dark:bg-blue-500 dark:hover:bg-blue-600"
+                                    disabled={isLoading}
                                 >
                                     Enviar
                                 </Button>
