@@ -17,8 +17,8 @@ export async function POST(req: NextRequest) {
     try {
         const resend = new Resend(process.env.RESEND_TOKEN as string)
         await resend.emails.send({
-            from: 'contacto@laso.uy',
-            to: 'maramal@outlook.com',
+            from: 'no-responder@laso.uy',
+            to: 'info@laso.uy',
             subject: 'Formulario de Contacto',
             html: `
                 <h2>Formulario de contacto - ${date.toLocaleDateString()}</h2>
