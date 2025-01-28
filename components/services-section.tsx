@@ -11,7 +11,9 @@ import { SERVICES } from '@/lib/services';
 export default function ServicesSection() {
     const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay({ delay: 3000 })]);
 
-    const scrollNext = useCallback((api: any) => api?.scrollNext(), []);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const scrollNext = useCallback((api: any) => api?.scrollNext(), []);    
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const scrollPrev = useCallback((api: any) => api?.scrollPrev(), []);
 
     return (

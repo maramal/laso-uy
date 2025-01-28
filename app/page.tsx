@@ -2,8 +2,6 @@
 
 import HeroSection from '@/components/hero-section';
 import ServicesSection from '@/components/services-section';
-import PortfolioSection from '@/components/portfolio-section';
-import TestimonialsSection from '@/components/testimonials-section';
 import PromoTeaser from '@/components/promo-teaser';
 
 export default function LandingPage() {

@@ -1,5 +1,4 @@
-import { Settings, Users, Code, Paintbrush, Database, Cloud } from "lucide-react";
-import Image from "next/image"
+import { Settings, Users, Code, Paintbrush, Database } from "lucide-react";
 
 export type Service = {
   icon: React.ReactElement;

@@ -53,10 +53,15 @@ export default function ContactUsPage() {
         }
     });
 
-    useEffect(() => {
+    function fillForm() {
         if (searchParams.has('ref')) {
             form.setValue('message', '¡Quiero la promoción de inauguración!')
         }
+    }
+
+    useEffect(() => {
+        fillForm()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     async function onSubmit(values: z.infer<typeof formSchema>) {

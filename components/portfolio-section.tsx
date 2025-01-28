@@ -12,7 +12,7 @@ const PORTFOLIO_ITEMS = [
 ];
 
 export default function PortfolioSection() {
-    const [portfolioRef, portfolioApi] = useEmblaCarousel({ loop: true }, [Autoplay({ delay: 3500 })]);
+    const [portfolioRef] = useEmblaCarousel({ loop: true }, [Autoplay({ delay: 3500 })]);
 
     return (
         <section className="py-20 px-4 bg-white dark:bg-gray-900" id="portfolio">

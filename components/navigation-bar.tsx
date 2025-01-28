@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { Moon, Sun, Languages, Menu } from "lucide-react";
+import { Moon, Sun, Menu } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useState } from "react";
 import Image from "next/image"
