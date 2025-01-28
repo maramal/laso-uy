@@ -38,6 +38,8 @@ const formSchema = z.object({
     })
 });
 
+export const dynamic = "force-dynamic"
+
 export default function ContactUsPage() {
     const searchParams = useSearchParams()
 
