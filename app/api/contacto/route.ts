@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
                 <p>A la brevedad nos pondremos en contacto contigo.</p>
                 <br />
                 <p>Saludos</p>
-                <p><a href="https://laso.uy/>LASO</a></p>
+                <p><a href="https://laso.uy/">LASO</a></p>
             `
         })
 
