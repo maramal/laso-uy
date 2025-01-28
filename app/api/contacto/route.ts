@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
         })
 
         await resend.emails.send({
-            from: 'LASO <no-responder.laso.uy>',
+            from: 'LASO <no-responder@laso.uy>',
             to: email as string,
             subject: 'Gracias por contactarte con nosotros',
             html: `
@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
                 <p><a href="https://laso.uy/>LASO</a></p>
             `
         })
-        
+
         response.ok = true
         response.message = 'Mensaje enviado'
     } catch (err) {
