@@ -29,6 +29,22 @@ export async function POST(req: NextRequest) {
                 
             `
         })
+
+        await resend.emails.send({
+            from: 'LASO <no-responder.laso.uy>',
+            to: email as string,
+            subject: 'Gracias por contactarte con nosotros',
+            html: `
+                <p>Hola, ${name}.</p>
+                <p>Gracias por comunicarte con nosotros, recibimos tu mensaje.</p>
+                <br />
+                <p>A la brevedad nos pondremos en contacto contigo.</p>
+                <br />
+                <p>Saludos</p>
+                <p><a href="https://laso.uy/>LASO</a></p>
+            `
+        })
+        
         response.ok = true
         response.message = 'Mensaje enviado'
     } catch (err) {
