@@ -65,6 +65,7 @@ export default function ContactForm() {
         setIsLoading(true)
         const formData = new FormData()
 
+        formData.append('name', values.name)
         formData.append('email', values.email)
         formData.append('message', values.message)
 

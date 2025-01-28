@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
             html: `
                 <h2>Formulario de contacto - ${date.toLocaleDateString()}</h2>
                 <p>Nombre: ${name}</p>
-                <p>Correo electrónico: <a href="mailto:${email}</p>
+                <p>Correo electrónico: <a href="mailto:${email}">${email}</a></p>
                 <p>Mensaje:</p>
                 <p>${message}</p>
                 
