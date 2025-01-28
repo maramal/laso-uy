@@ -138,7 +138,7 @@ export default function ContactForm() {
                         <div className="flex items-center space-x-4">
                             <MapPin className="text-blue-600 dark:text-blue-400" />
                             <div className="text-gray-700 dark:text-gray-300">
-                                Martín García 1601 Apto. 474
+                                Martín García 1602 Apto. 474
                             </div>
                         </div>
                     </div>
