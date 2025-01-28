@@ -12,14 +12,14 @@ import {
     FormItem,
     FormLabel,
     FormMessage,
-    
+
 } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { useToast } from "@/hooks/use-toast";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from 'next/navigation'
 
 // Esquema de validación con Zod
@@ -53,14 +53,10 @@ export default function ContactUsPage() {
         }
     });
 
-    function fillForm() {
+    useEffect(() => {
         if (searchParams.has('ref')) {
             form.setValue('message', '¡Quiero la promoción de inauguración!')
         }
-    }
-
-    useEffect(() => {
-        fillForm()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -105,125 +101,127 @@ export default function ContactUsPage() {
     }
 
     return (
-        <div className="min-h-screen w-full bg-white dark:bg-gray-900 transition-colors">
-            {/* Contenedor general */}
-            <div className="container mx-auto px-4 py-10 md:py-16">
-                <div className="mb-8 text-center">
-                    <h1 className="text-3xl font-bold text-gray-800 dark:text-white">
-                        Contáctanos
-                    </h1>
-                    <p className="text-gray-600 dark:text-gray-300 mt-2">
-                        Envíanos tus consultas, estamos para ayudarte.
-                    </p>
-                </div>
-
-                {/* Grid responsivo (2 columnas en md en adelante) */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    {/* Columna de información de contacto */}
-                    <div className="space-y-8">
-                        <div className="flex items-center space-x-4">
-                            <Phone className="text-blue-600 dark:text-blue-400" />
-                            <div className="text-gray-700 dark:text-gray-300">
-                                <Link href="https://wa.me/+59899344948" target="_blank">+598 99 344 948</Link>
-                            </div>
-                        </div>
-                        <div className="flex items-center space-x-4">
-                            <Mail className="text-blue-600 dark:text-blue-400" />
-                            <div className="text-gray-700 dark:text-gray-300">
-                                <Link href="mailto:info@laso.uy" target="_blank">info@laso.uy</Link>
-                            </div>
-                        </div>
-                        <div className="flex items-center space-x-4">
-                            <MapPin className="text-blue-600 dark:text-blue-400" />
-                            <div className="text-gray-700 dark:text-gray-300">
-                                Martín García 1601 Apto. 474
-                            </div>
-                        </div>
+        <Suspense>
+            <div className="min-h-screen w-full bg-white dark:bg-gray-900 transition-colors">
+                {/* Contenedor general */}
+                <div className="container mx-auto px-4 py-10 md:py-16">
+                    <div className="mb-8 text-center">
+                        <h1 className="text-3xl font-bold text-gray-800 dark:text-white">
+                            Contáctanos
+                        </h1>
+                        <p className="text-gray-600 dark:text-gray-300 mt-2">
+                            Envíanos tus consultas, estamos para ayudarte.
+                        </p>
                     </div>
 
-                    {/* Columna del formulario */}
-                    <div>
-                        <Form {...form}>
-                            <form
-                                onSubmit={form.handleSubmit(onSubmit)}
-                                className="space-y-6 bg-white dark:bg-gray-800 p-6 rounded-md shadow-md"
-                            >
-                                {/* Campo de nombre */}
-                                <FormField
-                                    control={form.control}
-                                    name="name"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel className="dark:text-gray-100">
-                                                Nombre
-                                            </FormLabel>
-                                            <FormControl>
-                                                <Input
-                                                    placeholder="Juan Perez"
-                                                    {...field}
-                                                    disabled={isLoading}
-                                                    className="bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border border-gray-300 dark:border-gray-600 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-blue-500 dark:focus:border-blue-400"
-                                                />
-                                            </FormControl>
-                                            <FormMessage className="text-red-600 dark:text-red-400" />
-                                        </FormItem>
-                                    )}
-                                />
+                    {/* Grid responsivo (2 columnas en md en adelante) */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        {/* Columna de información de contacto */}
+                        <div className="space-y-8">
+                            <div className="flex items-center space-x-4">
+                                <Phone className="text-blue-600 dark:text-blue-400" />
+                                <div className="text-gray-700 dark:text-gray-300">
+                                    <Link href="https://wa.me/+59899344948" target="_blank">+598 99 344 948</Link>
+                                </div>
+                            </div>
+                            <div className="flex items-center space-x-4">
+                                <Mail className="text-blue-600 dark:text-blue-400" />
+                                <div className="text-gray-700 dark:text-gray-300">
+                                    <Link href="mailto:info@laso.uy" target="_blank">info@laso.uy</Link>
+                                </div>
+                            </div>
+                            <div className="flex items-center space-x-4">
+                                <MapPin className="text-blue-600 dark:text-blue-400" />
+                                <div className="text-gray-700 dark:text-gray-300">
+                                    Martín García 1601 Apto. 474
+                                </div>
+                            </div>
+                        </div>
 
-                                {/* Campo de correo */}
-                                <FormField
-                                    control={form.control}
-                                    name="email"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel className="dark:text-gray-100">
-                                                Correo electrónico
-                                            </FormLabel>
-                                            <FormControl>
-                                                <Input
-                                                    placeholder="juan@mail.com"
-                                                    type="email"
-                                                    {...field}
-                                                    disabled={isLoading}
-                                                    className="bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border border-gray-300 dark:border-gray-600 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-blue-500 dark:focus:border-blue-400"
-                                                />
-                                            </FormControl>
-                                            <FormMessage className="text-red-600 dark:text-red-400" />
-                                        </FormItem>
-                                    )}
-                                />
-
-                                {/* Campo de mensaje */}
-                                <FormField
-                                    control={form.control}
-                                    name="message"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel className="dark:text-gray-100">Mensaje</FormLabel>
-                                            <FormControl>
-                                                <Textarea
-                                                    {...field}
-                                                    rows={6}
-                                                    disabled={isLoading}
-                                                    className="bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border border-gray-300 dark:border-gray-600 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-blue-500 dark:focus:border-blue-400"
-                                                />
-                                            </FormControl>
-                                            <FormMessage className="text-red-600 dark:text-red-400" />
-                                        </FormItem>
-                                    )}
-                                />
-
-                                <Button
-                                    type="submit"
-                                    className="bg-blue-600 hover:bg-blue-700 text-white dark:bg-blue-500 dark:hover:bg-blue-600"
+                        {/* Columna del formulario */}
+                        <div>
+                            <Form {...form}>
+                                <form
+                                    onSubmit={form.handleSubmit(onSubmit)}
+                                    className="space-y-6 bg-white dark:bg-gray-800 p-6 rounded-md shadow-md"
                                 >
-                                    Enviar
-                                </Button>
-                            </form>
-                        </Form>
+                                    {/* Campo de nombre */}
+                                    <FormField
+                                        control={form.control}
+                                        name="name"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel className="dark:text-gray-100">
+                                                    Nombre
+                                                </FormLabel>
+                                                <FormControl>
+                                                    <Input
+                                                        placeholder="Juan Perez"
+                                                        {...field}
+                                                        disabled={isLoading}
+                                                        className="bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border border-gray-300 dark:border-gray-600 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-blue-500 dark:focus:border-blue-400"
+                                                    />
+                                                </FormControl>
+                                                <FormMessage className="text-red-600 dark:text-red-400" />
+                                            </FormItem>
+                                        )}
+                                    />
+
+                                    {/* Campo de correo */}
+                                    <FormField
+                                        control={form.control}
+                                        name="email"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel className="dark:text-gray-100">
+                                                    Correo electrónico
+                                                </FormLabel>
+                                                <FormControl>
+                                                    <Input
+                                                        placeholder="juan@mail.com"
+                                                        type="email"
+                                                        {...field}
+                                                        disabled={isLoading}
+                                                        className="bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border border-gray-300 dark:border-gray-600 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-blue-500 dark:focus:border-blue-400"
+                                                    />
+                                                </FormControl>
+                                                <FormMessage className="text-red-600 dark:text-red-400" />
+                                            </FormItem>
+                                        )}
+                                    />
+
+                                    {/* Campo de mensaje */}
+                                    <FormField
+                                        control={form.control}
+                                        name="message"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel className="dark:text-gray-100">Mensaje</FormLabel>
+                                                <FormControl>
+                                                    <Textarea
+                                                        {...field}
+                                                        rows={6}
+                                                        disabled={isLoading}
+                                                        className="bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border border-gray-300 dark:border-gray-600 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-blue-500 dark:focus:border-blue-400"
+                                                    />
+                                                </FormControl>
+                                                <FormMessage className="text-red-600 dark:text-red-400" />
+                                            </FormItem>
+                                        )}
+                                    />
+
+                                    <Button
+                                        type="submit"
+                                        className="bg-blue-600 hover:bg-blue-700 text-white dark:bg-blue-500 dark:hover:bg-blue-600"
+                                    >
+                                        Enviar
+                                    </Button>
+                                </form>
+                            </Form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </Suspense>
     );
 }
