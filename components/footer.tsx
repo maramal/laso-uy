@@ -91,7 +91,7 @@ export default function Footer() {
                             <li className="flex items-center space-x-2">
                                 <MapPin className="text-blue-600 dark:text-blue-400" />
                                 <span className="text-sm text-gray-700 dark:text-gray-300">
-                                    Martín García 1602 Apto. 474
+                                    Martín García 1602 Apto. 474, 11800 - Montevideo, Uruguay
                                 </span>
                             </li>
                         </ul>
