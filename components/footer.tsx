@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { Phone, Mail, MapPin } from "lucide-react";
+import Image from "next/image";
+import { Mail, MapPin } from "lucide-react";
 import { useMemo } from "react";
-import Image from "next/image"
 
 export default function Footer() {
     // Obtenemos el año actual:
@@ -17,7 +17,12 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {/* Columna 1: Nombre de la empresa */}
                     <div>
-                        <Image src="/laso-icon.svg" alt="Logo de LASO en Footer" width={150} height={120} />
+                        <Image
+                            src="/laso-icon.svg"
+                            alt="Logo de LASO en Footer"
+                            width={150}
+                            height={120}
+                        />
                         <p className="text-sm text-gray-600 dark:text-gray-300">
                             Laboratorio de Software
                         </p>
@@ -59,7 +64,12 @@ export default function Footer() {
                         <h2 className="text-xl font-bold mb-2">Contáctanos</h2>
                         <ul className="space-y-3">
                             <li className="flex items-center space-x-2">
-                                <Phone className="text-blue-600 dark:text-blue-400" />
+                                <Image
+                                    src="/WhatsApp_icon.png"
+                                    alt="WhatsApp Icon"
+                                    width={20}
+                                    height={20}
+                                />
                                 <Link
                                     href="https://wa.me/+59899344948"
                                     target="_blank"

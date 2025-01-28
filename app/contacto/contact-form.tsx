@@ -1,9 +1,10 @@
 "use client";
 
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import Image from "next/image";
 
 import {
     Form,
@@ -118,7 +119,12 @@ export default function ContactForm() {
                     {/* Columna de información de contacto */}
                     <div className="space-y-8">
                         <div className="flex items-center space-x-4">
-                            <Phone className="text-blue-600 dark:text-blue-400" />
+                            <Image
+                                src="/WhatsApp_icon.png"
+                                alt="WhatsApp Icon"
+                                width={20}
+                                height={20}
+                            />
                             <div className="text-gray-700 dark:text-gray-300">
                                 <Link href="https://wa.me/+59899344948" target="_blank">+598 99 344 948</Link>
                             </div>
@@ -155,7 +161,6 @@ export default function ContactForm() {
                                             </FormLabel>
                                             <FormControl>
                                                 <Input
-                                                    placeholder="Juan Perez"
                                                     {...field}
                                                     disabled={isLoading}
                                                     className="bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border border-gray-300 dark:border-gray-600 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-blue-500 dark:focus:border-blue-400"
@@ -177,7 +182,6 @@ export default function ContactForm() {
                                             </FormLabel>
                                             <FormControl>
                                                 <Input
-                                                    placeholder="juan@mail.com"
                                                     type="email"
                                                     {...field}
                                                     disabled={isLoading}
