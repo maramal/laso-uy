@@ -1,6 +1,9 @@
 import { NextRequest } from "next/server";
 import { Resend } from "resend"
 
+const NO_REPLY_EMAIL = 'LASO <no-responder@laso.uy>'
+const INFO_EMAIL = 'info@laso.uy'
+
 export async function POST(req: NextRequest) {
     const response = {
         ok: false,
@@ -17,21 +20,20 @@ export async function POST(req: NextRequest) {
     try {
         const resend = new Resend(process.env.RESEND_TOKEN as string)
         await resend.emails.send({
-            from: 'no-responder@laso.uy',
-            to: 'info@laso.uy',
+            from: NO_REPLY_EMAIL,
+            to: INFO_EMAIL,
             subject: 'Formulario de Contacto',
             html: `
                 <h2>Formulario de contacto - ${date.toLocaleDateString()}</h2>
                 <p>Nombre: ${name}</p>
                 <p>Correo electrónico: <a href="mailto:${email}">${email}</a></p>
                 <p>Mensaje:</p>
-                <p>${message}</p>
-                
+                <p>${message}</p>                
             `
         })
 
         await resend.emails.send({
-            from: 'LASO <no-responder@laso.uy>',
+            from: NO_REPLY_EMAIL,
             to: email as string,
             subject: 'Gracias por contactarte con nosotros',
             html: `
