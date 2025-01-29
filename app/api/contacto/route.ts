@@ -5,7 +5,7 @@ import { CustomerTemplate } from "./templates/customer-template";
 import { ReactNode } from "react";
 
 const NO_REPLY_EMAIL = 'LASO <no-responder@laso.uy>'
-const INFO_EMAIL = 'info@laso.uy'
+const INFO_EMAIL = 'LASO <info@laso.uy>'
 
 const resend = new Resend(process.env.RESEND_TOKEN as string)
 
