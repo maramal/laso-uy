@@ -14,6 +14,8 @@ export async function POST(req: NextRequest) {
         ok: false,
         message: ''
     }
+    
+    const ipAddress = (req.headers.get('x-forwarded-for') ?? '127.0.0.1').split(',')[0]
 
     const formData = await req.formData()
     const name = formData.get('name') as string
@@ -28,7 +30,8 @@ export async function POST(req: NextRequest) {
             react: InfoTemplate({
                 name,
                 email,
-                message
+                message,
+                ipAddress
             }) as ReactNode
         })
 

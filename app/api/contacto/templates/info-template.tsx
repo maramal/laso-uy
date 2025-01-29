@@ -4,12 +4,14 @@ interface InfoTemplateProps {
     name: string;
     email: string;
     message: string;
+    ipAddress: string;
 }
 
 export const InfoTemplate: React.FC<Readonly<InfoTemplateProps>> = ({
     name,
     email,
     message,
+    ipAddress
 }) => {
     return (
         <div
@@ -57,6 +59,19 @@ export const InfoTemplate: React.FC<Readonly<InfoTemplateProps>> = ({
                         {email}
                     </a>
                 </p>
+                <p style={{ marginBottom: "8px", color: "#444" }}>
+                    <strong>Dirección IP:</strong>{" "}
+                    <a
+                        href={`https://who.is/whois-ip/ip-address/${ipAddress}`}
+                        target="_blank"
+                        style={{
+                            color: "#0066cc",
+                            textDecoration: "none",
+                        }}
+                    >
+                        {ipAddress}
+                    </a>
+                </p>                
                 <p style={{ marginBottom: "8px", color: "#444" }}>
                     <strong>Mensaje:</strong>
                 </p>
