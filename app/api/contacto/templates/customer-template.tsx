@@ -1,3 +1,4 @@
+import Image from "next/image";
 import * as React from "react";
 
 interface CustomerTemplateProps {
@@ -30,8 +31,8 @@ export const CustomerTemplate: React.FC<Readonly<CustomerTemplateProps>> = ({
             >
                 {/* Logo de LASO */}
                 <div style={{ marginBottom: "16px" }}>
-                    <img
-                        src="https://laso.uy/LASO.svg"
+                    <Image
+                        src="https://laso.uy/laso-icon.svg"
                         alt="Logotipo de LASO"
                         style={{ width: "120px", height: "auto" }}
                     />
