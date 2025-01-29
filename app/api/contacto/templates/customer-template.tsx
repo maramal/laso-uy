@@ -31,7 +31,7 @@ export const CustomerTemplate: React.FC<Readonly<CustomerTemplateProps>> = ({
             >
                 {/* Logo de LASO */}
                 <div style={{ marginBottom: "16px" }}>
-                    <Image
+                    <img
                         src="https://laso.uy/laso-icon.svg"
                         alt="Logotipo de LASO"
                         style={{ width: "120px", height: "auto" }}
