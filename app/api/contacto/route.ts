@@ -1,8 +1,13 @@
 import { NextRequest } from "next/server";
 import { Resend } from "resend"
+import { InfoTemplate } from "./templates/info-template";
+import { CustomerTemplate } from "./templates/customer-template";
+import { ReactNode } from "react";
 
 const NO_REPLY_EMAIL = 'LASO <no-responder@laso.uy>'
 const INFO_EMAIL = 'info@laso.uy'
+
+const resend = new Resend(process.env.RESEND_TOKEN as string)
 
 export async function POST(req: NextRequest) {
     const response = {
@@ -11,41 +16,38 @@ export async function POST(req: NextRequest) {
     }
 
     const formData = await req.formData()
-    const name = formData.get('name')
-    const email = formData.get('email')
-    const message = formData.get('message')
-
-    const date = new Date()
+    const name = formData.get('name') as string
+    const email = formData.get('email') as string
+    const message = formData.get('message') as string
 
     try {
-        const resend = new Resend(process.env.RESEND_TOKEN as string)
-        await resend.emails.send({
+        const { error: infoError } = await resend.emails.send({
             from: NO_REPLY_EMAIL,
-            to: INFO_EMAIL,
-            subject: 'Formulario de Contacto',
-            html: `
-                <h2>Formulario de contacto - ${date.toLocaleDateString()}</h2>
-                <p>Nombre: ${name}</p>
-                <p>Correo electrónico: <a href="mailto:${email}">${email}</a></p>
-                <p>Mensaje:</p>
-                <p>${message}</p>                
-            `
+            to: [INFO_EMAIL],
+            subject: 'Formulario de contacto',
+            react: InfoTemplate({
+                name,
+                email,
+                message
+            }) as ReactNode
         })
 
-        await resend.emails.send({
+        if (infoError) {
+            throw new Error(infoError.message)
+        }
+
+        const { error: customerError } = await resend.emails.send({
             from: NO_REPLY_EMAIL,
-            to: email as string,
+            to: [email],
             subject: 'Gracias por contactarte con nosotros',
-            html: `
-                <p>Hola, ${name}.</p>
-                <p>Gracias por comunicarte con nosotros, recibimos tu mensaje.</p>
-                <br />
-                <p>A la brevedad nos pondremos en contacto contigo.</p>
-                <br />
-                <p>Saludos</p>
-                <p><a href="https://laso.uy/">LASO</a></p>
-            `
+            react: CustomerTemplate({
+                name,
+            }) as ReactNode
         })
+
+        if (customerError) {
+            throw new Error(customerError.message)
+        }
 
         response.ok = true
         response.message = 'Mensaje enviado'
