@@ -4,8 +4,8 @@ import { InfoTemplate } from "./templates/info-template";
 import { CustomerTemplate } from "./templates/customer-template";
 import { ReactNode } from "react";
 
-const NO_REPLY_EMAIL = 'LATE <no-responder@laso.uy>'
-const INFO_EMAIL = 'LATE <info@laso.uy>'
+const NO_REPLY_EMAIL = 'LATE <no-responder@late.uy>'
+const INFO_EMAIL = 'LATE <info@late.uy>'
 
 const resend = new Resend(process.env.RESEND_TOKEN as string)
 

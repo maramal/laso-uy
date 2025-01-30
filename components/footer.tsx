@@ -5,6 +5,25 @@ import Image from "next/image";
 import { Mail, MapPin } from "lucide-react";
 import { useMemo } from "react";
 
+const siteMapLinks = [
+    {
+        name: 'Servicios',
+        href: '/servicios'
+    },
+    {
+        name: 'Paquetes',
+        href: '/paquetes'
+    },
+    {
+        name: 'Nosotros',
+        href: '/nosotros'
+    },
+    {
+        name: 'Contacto',
+        href: '/contacto'
+    }
+]
+
 export default function Footer() {
     // Obtenemos el año actual:
     const currentYear = useMemo(() => new Date().getFullYear(), []);
@@ -18,8 +37,8 @@ export default function Footer() {
                     {/* Columna 1: Nombre de la empresa */}
                     <div>
                         <Image
-                            src="/laso-icon.svg"
-                            alt="Logo de LASO en Footer"
+                            src="/late-icon.svg"
+                            alt="Logo de LATE en Footer"
                             width={150}
                             height={120}
                         />
@@ -32,30 +51,16 @@ export default function Footer() {
                     <div>
                         <h2 className="text-xl font-bold mb-2">Mapa de sitio</h2>
                         <ul className="space-y-2">
-                            <li>
+                            {siteMapLinks.map((siteMapLink, index) => (
+                                <li key={index}>
                                 <Link
-                                    href="/servicios"
+                                    href={siteMapLink.href}
                                     className="hover:underline hover:text-blue-600 dark:hover:text-blue-400"
                                 >
-                                    Servicios
+                                    {siteMapLink.name}
                                 </Link>
                             </li>
-                            <li>
-                                <Link
-                                    href="/nosotros"
-                                    className="hover:underline hover:text-blue-600 dark:hover:text-blue-400"
-                                >
-                                    Nosotros
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="/contacto"
-                                    className="hover:underline hover:text-blue-600 dark:hover:text-blue-400"
-                                >
-                                    Contacto
-                                </Link>
-                            </li>
+                            ))}
                         </ul>
                     </div>
 
@@ -81,11 +86,11 @@ export default function Footer() {
                             <li className="flex items-center space-x-2">
                                 <Mail className="text-blue-600 dark:text-blue-400" />
                                 <Link
-                                    href="mailto:info@laso.uy"
+                                    href="mailto:info@late.uy"
                                     target="_blank"
                                     className="text-sm text-gray-700 dark:text-gray-300 hover:underline hover:text-blue-600 dark:hover:text-blue-400"
                                 >
-                                    info@laso.uy
+                                    info@late.uy
                                 </Link>
                             </li>
                             <li className="flex items-center space-x-2">
@@ -101,7 +106,7 @@ export default function Footer() {
 
             {/* Subfooter */}
             <div className="bg-gray-200 dark:bg-gray-800 py-2 text-center text-sm text-gray-600 dark:text-gray-400">
-                &copy; {currentYear} LASO
+                &copy; {currentYear} LATE
             </div>
         </footer>
     );

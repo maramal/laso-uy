@@ -3,6 +3,7 @@
 import HeroSection from '@/components/hero-section';
 import ServicesSection from '@/components/services-section';
 import PromoTeaser from '@/components/promo-teaser';
+import { PackageSection } from '@/components/package-section';
 
 export default function LandingPage() {
   return (
@@ -12,6 +13,7 @@ export default function LandingPage() {
       {/*<PortfolioSection />*/}
       {/*<TestimonialsSection />*/}
       <PromoTeaser />
+      <PackageSection />
     </div>
   );
 }

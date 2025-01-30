@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useTheme } from "next-themes";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
     Sheet,
     SheetContent,
@@ -22,6 +22,7 @@ type NavigationLink = {
 const NAV_LINKS: NavigationLink[] = [
     { name: "Inicio", href: "/" },
     { name: "Servicios", href: "/servicios" },
+    { name: "Paquetes", href: "/paquetes" },
     { name: "Nosotros", href: "/nosotros" },
     { name: "Contacto", href: "/contacto" }
 ];
@@ -30,7 +31,15 @@ export function NavigationBar() {
     const { theme, setTheme } = useTheme();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+    // Evita el hydration mismatch: no renderiza iconos/texto hasta montar en cliente
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
     const toggleTheme = () => {
+        // Evitar llamar setTheme antes de “montado”
+        if (!mounted) return;
         setTheme(theme === "dark" ? "light" : "dark");
     };
 
@@ -67,19 +76,21 @@ export function NavigationBar() {
 
                             {/* Botón para cambiar tema en menú móvil */}
                             <div className="mt-6">
-                                <Button variant="ghost" onClick={toggleTheme} className="w-full">
-                                    {theme === "dark" ? (
-                                        <>
-                                            <Sun className="h-5 w-5 mr-2" />
-                                            Modo claro
-                                        </>
-                                    ) : (
-                                        <>
-                                            <Moon className="h-5 w-5 mr-2" />
-                                            Modo oscuro
-                                        </>
-                                    )}
-                                </Button>
+                                {mounted && (
+                                    <Button variant="ghost" onClick={toggleTheme} className="w-full">
+                                        {theme === "dark" ? (
+                                            <>
+                                                <Sun className="h-5 w-5 mr-2" />
+                                                Modo claro
+                                            </>
+                                        ) : (
+                                            <>
+                                                <Moon className="h-5 w-5 mr-2" />
+                                                Modo oscuro
+                                            </>
+                                        )}
+                                    </Button>
+                                )}
                             </div>
                         </SheetContent>
                     </Sheet>
@@ -90,7 +101,7 @@ export function NavigationBar() {
                     href="/"
                     className="ml-2 text-lg font-semibold tracking-tight hover:text-primary md:ml-2"
                 >
-                    <Image src="/laso-icon.svg" alt="Logo de LASO" width={80} height={50} />
+                    <Image src="/late-icon.svg" alt="Logo de LATE" width={80} height={50} />
                 </Link>
 
                 {/* Navegación Desktop */}
@@ -112,19 +123,21 @@ export function NavigationBar() {
 
                 {/* Botón para cambiar tema en Desktop */}
                 <div className="ml-auto hidden items-center gap-2 md:flex">
-                    <Button variant="ghost" onClick={toggleTheme} className="flex items-center">
-                        {theme === "dark" ? (
-                            <>
-                                <Sun className="h-5 w-5 mr-2" />
-                                Modo claro
-                            </>
-                        ) : (
-                            <>
-                                <Moon className="h-5 w-5 mr-2" />
-                                Modo oscuro
-                            </>
-                        )}
-                    </Button>
+                    {mounted && (
+                        <Button variant="ghost" onClick={toggleTheme} className="flex items-center">
+                            {theme === "dark" ? (
+                                <>
+                                    <Sun className="h-5 w-5 mr-2" />
+                                    Modo claro
+                                </>
+                            ) : (
+                                <>
+                                    <Moon className="h-5 w-5 mr-2" />
+                                    Modo oscuro
+                                </>
+                            )}
+                        </Button>
+                    )}
                 </div>
             </div>
         </nav>

@@ -31,7 +31,7 @@ export const CustomerTemplate: React.FC<Readonly<CustomerTemplateProps>> = ({
                 {/* Logo de LATE */}
                 <div style={{ marginBottom: "16px" }}>
                     <img
-                        src="https://laso.uy/laso-icon.svg"
+                        src="https://late.uy/late-icon.svg"
                         alt="Logotipo de LATE"
                         style={{ width: "120px", height: "auto" }}
                     />
@@ -83,7 +83,7 @@ export const CustomerTemplate: React.FC<Readonly<CustomerTemplateProps>> = ({
                 {/* Botón / CTA */}
                 <div style={{ margin: "20px 0" }}>
                     <a
-                        href="https://laso.uy/"
+                        href="https://late.uy/"
                         target="_blank"
                         rel="noopener noreferrer"
                         style={{
@@ -105,7 +105,7 @@ export const CustomerTemplate: React.FC<Readonly<CustomerTemplateProps>> = ({
                     ¡Muchas gracias por confiar en <strong>LATE</strong>!
                 </p>
                 <p style={{ marginBottom: "8px", color: "#444", fontSize: "16px" }}>
-                    Equipo de <a href="https://laso.uy/">LATE</a>
+                    Equipo de <a href="https://late.uy/">LATE</a>
                 </p>
             </div>
         </div>

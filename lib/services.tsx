@@ -3,61 +3,73 @@ import { Settings, Users, Code, Paintbrush, Database } from "lucide-react";
 export type Service = {
   icon: React.ReactElement;
   title: string;
-  description: string;
-  body: React.ReactElement;
-  image: string
+  description: string;         // Texto simple para usuarios no técnicos
+  image: string;
+  shortBody: React.ReactNode;  // Contenido breve en la página
+  technicalDetail: React.ReactNode; // Detalles técnicos que se mostrarán en un modal
 };
 
 export const SERVICES: Service[] = [
+  // 1) Desarrollo a Medida
   {
     icon: <Settings className="h-12 w-12 text-blue-600" />,
     title: "Desarrollo a Medida",
-    description: "Desarrollos a medidas para tus necesidades de negocio con tecnología de punta",
-    image: '/web_dev.jpg',
-    body: (
+    description: "Creamos soluciones digitales personalizadas para tu negocio.",
+    image: "/web_dev.jpg",
+    shortBody: (
+      <div>
+        <p>
+          Creamos aplicaciones y sistemas ajustados exactamente a lo que tu
+          organización necesita, sin complejidades innecesarias.
+        </p>
+        <p className="mt-4">
+          Nuestra meta es optimizar procesos y ofrecer resultados que
+          verdaderamente impulsen tu crecimiento.
+        </p>
+      </div>
+    ),
+    technicalDetail: (
       <div className="prose dark:prose-invert max-w-none">
-        <h3 className="text-2xl font-semibold mb-4">Soluciones Personalizadas</h3>
+        <h3 className="text-2xl font-semibold mb-4">Detalles Técnicos</h3>
         <p className="mb-6">
-          Creamos aplicaciones empresariales totalmente adaptadas a sus procesos
-          y necesidades específicas. Nuestro enfoque incluye:
+          Para los proyectos a medida, analizamos en profundidad los
+          requerimientos, proponemos arquitecturas escalables y trabajamos con
+          metodologías ágiles para asegurar calidad y rapidez.
         </p>
         <ul className="list-disc pl-6 space-y-3 mb-6">
-          <li>Análisis detallado de requerimientos</li>
-          <li>Diseño de arquitectura escalable</li>
-          <li>Desarrollo con metodologías ágiles</li>
-          <li>Implementación y capacitación técnica</li>
+          <li>Análisis y documentación de requerimientos</li>
+          <li>Diseño de arquitectura modular y escalable</li>
+          <li>Desarrollo con control de versiones y CI/CD</li>
+          <li>Integración continua con sistemas existentes</li>
+          <li>Mantenimiento evolutivo y soporte post-lanzamiento</li>
         </ul>
-        <div className="grid md:grid-cols-2 gap-6 mt-4">
-          <div className="p-6 bg-gray-100 dark:bg-gray-800 rounded-lg">
-            <h4 className="font-semibold mb-2">Tecnologías Principales</h4>
-            <ul className="space-y-2">
-              <li>• Node.js / Python / WordPress</li>
-              <li>• React / Angular / Vue</li>
-              <li>• PostgreSQL / MongoDB</li>
-            </ul>
-          </div>
-          <div className="p-6 bg-gray-100 dark:bg-gray-800 rounded-lg">
-            <h4 className="font-semibold mb-2">Beneficios Clave</h4>
-            <ul className="space-y-2">
-              <li>• Integración con sistemas existentes</li>
-              <li>• Escalabilidad garantizada</li>
-              <li>• Mantenimiento incluido</li>
-            </ul>
-          </div>
-        </div>
       </div>
-    )
+    ),
   },
+
+  // 2) Aumento de Equipo (se mantiene igual)
   {
     icon: <Users className="h-12 w-12 text-green-600" />,
     title: "Aumento de Equipo",
-    description: "Incrementá la productividad de tus proyectos con nuestros desarrolladores",
-    image: '/augmentation.webp',
-    body: (
+    description: "Especialistas listos para fortalecer tus proyectos de inmediato.",
+    image: "/augmentation.webp",
+    shortBody: (
+      <div>
+        <p>
+          Integra profesionales especializados a tu equipo para acelerar
+          entregas, mejorar calidad y optimizar resultados.
+        </p>
+        <p className="mt-4">
+          Disponemos de diferentes modalidades para cubrir tus necesidades.
+        </p>
+      </div>
+    ),
+    technicalDetail: (
       <div className="prose dark:prose-invert max-w-none">
         <h3 className="text-2xl font-semibold mb-4">Refuerzo Tecnológico</h3>
         <p className="mb-6">
-          Integra profesionales especializados a tu equipo existente:
+          Nuestros especialistas cubren perfiles de desarrollo full stack,
+          diseño UX/UI, DevOps, entre otros.
         </p>
         <div className="grid md:grid-cols-2 gap-8 mb-6">
           <div className="space-y-4">
@@ -87,21 +99,40 @@ export const SERVICES: Service[] = [
           </div>
         </div>
       </div>
-    )
+    ),
   },
+
+  // 3) Desarrollo de Apps (antes "Aplicaciones Web y Móviles")
   {
     icon: <Code className="h-12 w-12 text-purple-600" />,
-    title: "Aplicaciones Web y Móviles",
-    description: "Aplicaciones responsivas de alto rendimiento para todas las plataformas",
-    image: '/phone_dev.jpg',
-    body: (
+    title: "Desarrollo de Apps",
+    description: "Creamos aplicaciones web y móviles pensadas para tu audiencia.",
+    image: "/phone_dev.jpg",
+    shortBody: (
+      <div>
+        <p>
+          Tu empresa puede estar presente en todas las plataformas,
+          ofreciéndoles a tus usuarios la mejor experiencia, ya sea en su
+          navegador o en su teléfono.
+        </p>
+        <p className="mt-4">
+          Nos enfocamos en la usabilidad y el rendimiento para llegar con éxito
+          a tu público.
+        </p>
+      </div>
+    ),
+    technicalDetail: (
       <div className="prose dark:prose-invert max-w-none">
         <h3 className="text-2xl font-semibold mb-4">Desarrollo Multiplataforma</h3>
+        <p className="mb-6">
+          Ofrecemos aplicaciones nativas y cross-platform, con enfoque en Android
+          y iOS. Utilizamos frameworks modernos (como React Native) y también
+          tecnologías nativas si el proyecto lo requiere.
+        </p>
         <div className="grid md:grid-cols-2 gap-8 mb-6">
           <div>
             <h4 className="font-semibold text-lg mb-3">Web Apps</h4>
             <ul className="space-y-2">
-              <li>• Aplicaciones móviles</li>
               <li>• Single Page Applications</li>
               <li>• Plataformas empresariales</li>
             </ul>
@@ -109,39 +140,40 @@ export const SERVICES: Service[] = [
           <div>
             <h4 className="font-semibold text-lg mb-3">Mobile Apps</h4>
             <ul className="space-y-2">
-              <li>• Desarrollo nativo (iOS/Android)</li>
-              <li>• Soluciones cross-platform</li>
+              <li>• Desarrollo nativo (Android / iOS)</li>
+              <li>• Soluciones cross-platform (React Native)</li>
               <li>• Integración con hardware móvil</li>
             </ul>
           </div>
         </div>
-        <div className="p-6 bg-gray-100 dark:bg-gray-800 rounded-lg mt-4">
-          <h4 className="font-semibold mb-3">Tecnologías Destacadas</h4>
-          <div className="grid grid-cols-3 gap-4 text-center">
-            <div className="p-3 bg-white dark:bg-gray-700 rounded">
-              <span className="font-mono">Next JS</span>
-            </div>
-            <div className="p-3 bg-white dark:bg-gray-700 rounded">
-              <span className="font-mono">React Native</span>
-            </div>
-            <div className="p-3 bg-white dark:bg-gray-700 rounded">
-              <span className="font-mono">Node</span>
-            </div>
-          </div>
-        </div>
       </div>
-    )
+    ),
   },
+
+  // 4) Posicionamiento en Buscadores (antes "Mejora de SEO")
   {
     icon: <Paintbrush className="h-12 w-12 text-orange-600" />,
-    title: "Mejora de SEO",
-    description: "Hacé que tu negocio figure entre los primeros en los buscadores",
-    image: '/seo.jpg',
-    body: (
+    title: "Posicionamiento en Buscadores",
+    description: "Haz que tu negocio aparezca en los primeros resultados de búsqueda.",
+    image: "/seo.jpg",
+    shortBody: (
+      <div>
+        <p>
+          Aumentamos la visibilidad de tu marca en los buscadores de manera
+          orgánica, mejorando tu tráfico y potenciales clientes.
+        </p>
+        <p className="mt-4">
+          Mediante estrategias de contenido y optimizaciones constantes,
+          llevamos tu sitio a los primeros lugares.
+        </p>
+      </div>
+    ),
+    technicalDetail: (
       <div className="prose dark:prose-invert max-w-none">
         <h3 className="text-2xl font-semibold mb-4">Optimización para Buscadores</h3>
         <p className="mb-6">
-          Mejoramos tu visibilidad orgánica en motores de búsqueda mediante:
+          Aplicamos SEO técnico y de contenido para mejorar la relevancia y
+          autoridad de tu sitio web:
         </p>
         <div className="grid md:grid-cols-2 gap-8 mb-6">
           <div>
@@ -161,28 +193,46 @@ export const SERVICES: Service[] = [
             </ul>
           </div>
         </div>
-        <div className="p-6 bg-gray-100 dark:bg-gray-800 rounded-lg mt-4">
-          <h4 className="font-semibold mb-3">Resultados Esperados</h4>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-            <div className="p-3 bg-white dark:bg-gray-700 rounded">
-              <div className="text-xl font-bold">+50%</div>
-              <div className="text-sm">Tráfico orgánico</div>
-            </div>
-            <div className="p-3 bg-white dark:bg-gray-700 rounded">
-              <div className="text-xl font-bold">90+</div>
-              <div className="text-sm">Puntuación SEO</div>
-            </div>
-            <div className="p-3 bg-white dark:bg-gray-700 rounded">
-              <div className="text-xl font-bold">Top 3</div>
-              <div className="text-sm">Posicionamiento</div>
-            </div>
-            <div className="p-3 bg-white dark:bg-gray-700 rounded">
-              <div className="text-xl font-bold">24/7</div>
-              <div className="text-sm">Monitoreo</div>
-            </div>
-          </div>
-        </div>
+        <p className="mb-6">
+          Analizamos métricas, generamos reportes y mejoramos continuamente para
+          alcanzar resultados sostenibles.
+        </p>
       </div>
-    )
-  }
+    ),
+  },
+
+  // 5) Manejo de Redes Sociales (nuevo servicio)
+  {
+    icon: <Users className="h-12 w-12 text-pink-600" />,
+    title: "Manejo de Redes Sociales",
+    description: "Gestión profesional de tus perfiles para aumentar tu alcance.",
+    image: "/social_media.webp", // Asegúrate de colocar esta imagen en 'public' o cambiar la ruta
+    shortBody: (
+      <div>
+        <p>
+          Diseñamos y ejecutamos estrategias efectivas en redes sociales para
+          conectar con tu audiencia y fortalecer tu marca.
+        </p>
+        <p className="mt-4">
+          Desde la creación de contenido hasta la interacción con seguidores,
+          nos ocupamos de todo.
+        </p>
+      </div>
+    ),
+    technicalDetail: (
+      <div className="prose dark:prose-invert max-w-none">
+        <h3 className="text-2xl font-semibold mb-4">Gestión de Social Media</h3>
+        <ul className="list-disc pl-6 space-y-3 mb-6">
+          <li>Planificación de contenido y calendario editorial</li>
+          <li>Gestión de perfiles en Facebook, Instagram, LinkedIn, etc.</li>
+          <li>Informe de métricas y optimizaciones periódicas</li>
+          <li>Campañas publicitarias segmentadas</li>
+        </ul>
+        <p>
+          Garantizamos la identidad coherente de tu marca en cada canal y una
+          comunicación alineada con tus objetivos de negocio.
+        </p>
+      </div>
+    ),
+  },
 ];

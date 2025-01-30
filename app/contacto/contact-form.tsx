@@ -56,7 +56,20 @@ export default function ContactForm() {
 
     useEffect(() => {
         if (searchParams.has('ref')) {
-            form.setValue('message', '¡Quiero la promoción de inauguración!')
+            const ref = searchParams.get('ref')
+            let message = ''
+
+            switch(ref) {
+                case 'promo':
+                    message = '¡Quiero la promoción de inauguración!'
+                    break;
+                case 'late-completo':
+                    message = 'Quiero más información sobre el paquete LATE completo.'
+                    break;
+            }
+
+            form.setValue('message', message)
+            
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -133,7 +146,7 @@ export default function ContactForm() {
                         <div className="flex items-center space-x-4">
                             <Mail className="text-blue-600 dark:text-blue-400" />
                             <div className="text-gray-700 dark:text-gray-300">
-                                <Link href="mailto:info@laso.uy" target="_blank">info@laso.uy</Link>
+                                <Link href="mailto:info@late.uy" target="_blank">info@late.uy</Link>
                             </div>
                         </div>
                         <div className="flex items-center space-x-4">

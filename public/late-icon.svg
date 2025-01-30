@@ -4,13 +4,13 @@
   viewBox="0 0 200 80"
   fill="none"
   xmlns="http://www.w3.org/2000/svg"
-  aria-labelledby="laso-icon-title"
+  aria-labelledby="late-icon-title"
   role="img"
 >
-  <title id="laso-icon-title">LATE</title>
+  <title id="late-icon-title">LATE</title>
   <defs>
     <!-- Gradiente lineal con stops de rojo a naranja -->
-    <linearGradient id="lasoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+    <linearGradient id="lateGradient" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#FF0000" />
       <stop offset="100%" stop-color="#FFA500" />
 
@@ -39,7 +39,7 @@
     font-size="48"
     font-family="Arial, sans-serif"
     font-weight="bold"
-    fill="url(#lasoGradient)"
+    fill="url(#lateGradient)"
   >
     LATE
   </text>
