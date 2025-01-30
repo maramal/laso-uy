@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 // Metadatos para SEO (Next.js App Router)
 export const metadata: Metadata = {
-    title: "Nosotros | LASO",
+    title: "Nosotros | LATE",
     description:
         "Conoce a nuestro equipo de jóvenes uruguayos apasionados por la tecnología y únete a nosotros para impulsar la innovación.",
 };

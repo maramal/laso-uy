@@ -17,8 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "LASO",
-  description: "LASO: Laboratorio de Software",
+  title: "LATE",
+  description: "LATE: Laboratorio Tecnológico",
 };
 
 export default function RootLayout({

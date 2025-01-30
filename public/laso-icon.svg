@@ -7,7 +7,7 @@
   aria-labelledby="laso-icon-title"
   role="img"
 >
-  <title id="laso-icon-title">LASO</title>
+  <title id="laso-icon-title">LATE</title>
   <defs>
     <!-- Gradiente lineal con stops de rojo a naranja -->
     <linearGradient id="lasoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -30,7 +30,7 @@
     </linearGradient>
   </defs>
 
-  <!-- Texto LASO con el relleno (fill) apuntando al gradiente animado -->
+  <!-- Texto LATE con el relleno (fill) apuntando al gradiente animado -->
   <text
     x="50%"
     y="50%"
@@ -41,6 +41,6 @@
     font-weight="bold"
     fill="url(#lasoGradient)"
   >
-    LASO
+    LATE
   </text>
 </svg>

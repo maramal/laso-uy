@@ -1,8 +1,8 @@
 import Image from "next/image";
 
 export const metadata = {
-    title: "Nosotros | LASO",
-    description: "Descubre quienes trabajan en LASO."
+    title: "Nosotros | LATE",
+    description: "Descubre quienes trabajan en LATE."
 };
 
 export default function AboutUsPage() {

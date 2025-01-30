@@ -2,7 +2,7 @@ import { SERVICES } from "@/lib/services";
 import Image from "next/image";
 
 export const metadata = {
-    title: "Servicios | LASO",
+    title: "Servicios | LATE",
     description: "Descubre nuestros servicios",
 };
 

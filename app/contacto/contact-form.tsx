@@ -82,7 +82,7 @@ export default function ContactForm() {
 
             toast({
                 title: 'Mensaje enviado',
-                description: 'Gracias por comunicarse con LASO. Nos contactaremos a la brevedad.',
+                description: 'Gracias por comunicarse con LATE. Nos contactaremos a la brevedad.',
             })
 
             form.reset()

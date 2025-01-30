@@ -28,11 +28,11 @@ export const CustomerTemplate: React.FC<Readonly<CustomerTemplateProps>> = ({
                     textAlign: "center",
                 }}
             >
-                {/* Logo de LASO */}
+                {/* Logo de LATE */}
                 <div style={{ marginBottom: "16px" }}>
                     <img
                         src="https://laso.uy/laso-icon.svg"
-                        alt="Logotipo de LASO"
+                        alt="Logotipo de LATE"
                         style={{ width: "120px", height: "auto" }}
                     />
                 </div>
@@ -102,10 +102,10 @@ export const CustomerTemplate: React.FC<Readonly<CustomerTemplateProps>> = ({
 
                 {/* Despedida */}
                 <p style={{ marginBottom: "8px", color: "#444", fontSize: "16px" }}>
-                    ¡Muchas gracias por confiar en <strong>LASO</strong>!
+                    ¡Muchas gracias por confiar en <strong>LATE</strong>!
                 </p>
                 <p style={{ marginBottom: "8px", color: "#444", fontSize: "16px" }}>
-                    Equipo de <a href="https://laso.uy/">LASO</a>
+                    Equipo de <a href="https://laso.uy/">LATE</a>
                 </p>
             </div>
         </div>

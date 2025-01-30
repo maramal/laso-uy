@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
 export const metadata = {
-    title: 'Promo Inauguración | LASO',
+    title: 'Promo Inauguración | LATE',
     description: 'Promoción de Inauguración'
 }
 

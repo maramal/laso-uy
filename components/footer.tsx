@@ -24,7 +24,7 @@ export default function Footer() {
                             height={120}
                         />
                         <p className="text-sm text-gray-600 dark:text-gray-300">
-                            Laboratorio de Software
+                            Laboratorio Tecnológico
                         </p>
                     </div>
 
