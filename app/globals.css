@@ -79,3 +79,7 @@ body {
   display: flex;
   backface-visibility: hidden;
 }
+
+.embla__slide {
+  margin-right: 20px;
+}
