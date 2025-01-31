@@ -92,13 +92,17 @@ async function validateReCaptcha(token: string) {
             }
         )
 
-        if (res && res.data?.success && res.data?.score > 0.5) {
-            // Posiblemente es humano
-            response.scoreValid = true
-        } else {
+        if (!res || !res.data?.success) {
+            throw new Error('Error al verificar el token')
+        } 
+        
+        const score = res.data?.score
+        if (score <= 0.5) {
             // Robot
             throw new Error('Tu comportamiento no es suficientemente humano, pero agradecemos tu visita.')
         }
+
+        response.scoreValid = true
     } catch (err) {
         if (err instanceof Error) {
             response.errorMessage = err.message
