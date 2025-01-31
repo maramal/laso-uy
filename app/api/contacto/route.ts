@@ -3,6 +3,7 @@ import { Resend } from "resend"
 import { InfoTemplate } from "./templates/info-template";
 import { CustomerTemplate } from "./templates/customer-template";
 import { ReactNode } from "react";
+import axios from "axios"
 
 const NO_REPLY_EMAIL = 'LATE <no-responder@late.uy>'
 const INFO_EMAIL = 'LATE <info@late.uy>'
@@ -21,8 +22,14 @@ export async function POST(req: NextRequest) {
     const name = formData.get('name') as string
     const email = formData.get('email') as string
     const message = formData.get('message') as string
+    const token = formData.get('token') as string
 
     try {
+        const { scoreValid, errorMessage } = await validateReCaptcha(token)
+        if (!scoreValid) {
+            throw new Error(errorMessage)
+        }
+
         const { error: infoError } = await resend.emails.send({
             from: NO_REPLY_EMAIL,
             to: [INFO_EMAIL],
@@ -62,6 +69,41 @@ export async function POST(req: NextRequest) {
     } finally {
         return Response.json(response)
     }
+}
 
-    
+async function validateReCaptcha(token: string) {
+    const response = {
+        scoreValid: false,
+        errorMessage: ''
+    }
+
+    const siteVerifyURL = 'https://www.google.com/recaptcha/api/siteverify'
+    const reCaptchaSecretKey = process.env.NEXT_PUBLIC_RECAPTCHA_KEY_SECRET as string
+    const formData = `secret=${reCaptchaSecretKey}&response=${token}`
+
+    try {
+        const res = await axios.post(
+            siteVerifyURL,
+            formData,
+            {
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                }
+            }
+        )
+
+        if (res && res.data?.success && res.data?.score > 0.5) {
+            // Posiblemente es humano
+            response.scoreValid = true
+        } else {
+            // Robot
+            throw new Error('Tu comportamiento no es suficientemente humano, pero agradecemos tu visita.')
+        }
+    } catch (err) {
+        if (err instanceof Error) {
+            response.errorMessage = err.message
+        }
+    } finally {
+        return response
+    }
 }

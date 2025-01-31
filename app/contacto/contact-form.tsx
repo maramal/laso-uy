@@ -22,6 +22,7 @@ import Link from "next/link";
 import { useToast } from "@/hooks/use-toast";
 import { useEffect, useState } from "react";
 import { useSearchParams } from 'next/navigation'
+import { useReCaptcha } from "next-recaptcha-v3";
 
 // Esquema de validación con Zod
 const formSchema = z.object({
@@ -41,6 +42,7 @@ const formSchema = z.object({
 
 export default function ContactForm() {
     const searchParams = useSearchParams()
+    const { executeRecaptcha } = useReCaptcha()
 
     const { toast } = useToast()
     const [isLoading, setIsLoading] = useState(false)
@@ -76,13 +78,16 @@ export default function ContactForm() {
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         setIsLoading(true)
-        const formData = new FormData()
 
+        const formData = new FormData()
         formData.append('name', values.name)
         formData.append('email', values.email)
         formData.append('message', values.message)
 
         try {
+            const reCaptchaVerification = await executeRecaptcha("form_submit")
+            formData.append('recaptcha_token', reCaptchaVerification)
+
             const response = await fetch('/api/contacto', {
                 method: 'POST',
                 body: formData
