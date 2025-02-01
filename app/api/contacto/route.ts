@@ -93,7 +93,7 @@ async function validateReCaptcha(token: string) {
         )
 
         if (!res?.data?.success) {
-            throw new Error(res.data['error-codes'])
+            throw new Error(token)
         } 
         
         const score = res.data?.score
