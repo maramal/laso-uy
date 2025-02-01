@@ -22,10 +22,10 @@ export async function POST(req: NextRequest) {
     const name = formData.get('name') as string
     const email = formData.get('email') as string
     const message = formData.get('message') as string
-    const token = formData.get('token') as string
+    const recaptchaToken = formData.get('recaptcha_token') as string
 
     try {
-        const { scoreValid, errorMessage } = await validateReCaptcha(token)
+        const { scoreValid, errorMessage } = await validateReCaptcha(recaptchaToken)
         if (!scoreValid) {
             throw new Error(errorMessage)
         }
@@ -67,7 +67,7 @@ export async function POST(req: NextRequest) {
             response.message = err.message
         }
     } finally {
-        return Response.json({ token })
+        return Response.json(response)
     }
 }
 
