@@ -67,7 +67,7 @@ export async function POST(req: NextRequest) {
             response.message = err.message
         }
     } finally {
-        return Response.json(response)
+        return Response.json({ token })
     }
 }
 
@@ -93,7 +93,7 @@ async function validateReCaptcha(token: string) {
         )
 
         if (!res?.data?.success) {
-            throw new Error(token)
+            throw new Error('Error al verificar el token')
         } 
         
         const score = res.data?.score
