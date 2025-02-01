@@ -92,8 +92,8 @@ async function validateReCaptcha(token: string) {
             }
         )
 
-        if (!res || !res.data?.success) {
-            throw new Error('Error al verificar el token')
+        if (!res?.data?.success) {
+            throw new Error(res.statusText)
         } 
         
         const score = res.data?.score
