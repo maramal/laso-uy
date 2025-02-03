@@ -52,7 +52,7 @@ export default function PromoTeaser() {
                             "
                             aria-label="Aprovechar Promoción"
                         >
-                            ¡Aprovecha ahora!
+                            ¡Aprovecha esta promoción!
                         </Button>
                     </Link>
                 </div>
