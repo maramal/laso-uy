@@ -68,7 +68,10 @@ export default function PromotionsPage() {
                         como base para tu presencia online y, al mismo tiempo, ahorrarte
                         la inversión en diseño o desarrollo inicial.
                     </p>
-                    <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                    <Button
+                        className="bg-blue-600 hover:bg-blue-700 text-white"
+                        aria-label="Contratar promoción ahora"
+                    >
                         <Link href="/contacto?ref=promo">¡Contratar ahora!</Link>
                     </Button>
                 </div>

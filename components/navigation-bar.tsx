@@ -48,7 +48,11 @@ export function NavigationBar() {
                 <div className="md:hidden">
                     <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
                         <SheetTrigger asChild>
-                            <Button variant="ghost" size="icon">
+                            <Button
+                                variant="ghost" 
+                                size="icon"
+                                aria-label="Alternar menú"
+                            >
                                 <Menu className="h-5 w-5" />
                                 <span className="sr-only">Alternar Menú</span>
                             </Button>
@@ -75,7 +79,12 @@ export function NavigationBar() {
                             {/* Botón tema móvil - Render condicional completo */}
                             {mounted && (
                                 <div className="mt-6">
-                                    <Button variant="ghost" onClick={toggleTheme} className="w-full">
+                                    <Button
+                                        variant="ghost" 
+                                        onClick={toggleTheme} 
+                                        className="w-full"
+                                        aria-label="Alternar modo"
+                                    >
                                         {theme === "dark" ? (
                                             <>
                                                 <Sun className="h-5 w-5 mr-2" />
@@ -122,7 +131,12 @@ export function NavigationBar() {
                 {/* Botón tema Desktop - Render condicional completo */}
                 {mounted && (
                     <div className="ml-auto hidden items-center gap-2 md:flex">
-                        <Button variant="ghost" onClick={toggleTheme} className="flex items-center">
+                        <Button 
+                            variant="ghost" 
+                            onClick={toggleTheme} 
+                            className="flex items-center"
+                            aria-label="Alternar modo"
+                        >
                             {theme === "dark" ? (
                                 <>
                                     <Sun className="h-5 w-5 mr-2" />

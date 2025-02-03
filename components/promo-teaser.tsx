@@ -50,6 +50,7 @@ export default function PromoTeaser() {
                                 hover:-translate-y-1
                                 mt-4
                             "
+                            aria-label="Aprovechar Promoción"
                         >
                             ¡Aprovecha ahora!
                         </Button>

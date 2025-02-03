@@ -52,6 +52,7 @@ export default function ServicesSection() {
                             size="icon"
                             className="dark:text-white dark:hover:bg-gray-700"
                             onClick={() => scrollPrev(emblaApi)}
+                            aria-label="Retrodecer Carrusel"
                         >
                             <ChevronLeft className="h-6 w-6" />
                         </Button>
@@ -60,6 +61,7 @@ export default function ServicesSection() {
                             size="icon"
                             className="dark:text-white dark:hover:bg-gray-700"
                             onClick={() => scrollNext(emblaApi)}
+                            aria-label="Avanzar Carrusel"
                         >
                             <ChevronRight className="h-6 w-6" />
                         </Button>
