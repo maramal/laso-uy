@@ -3,18 +3,25 @@
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Card, CardContent } from "./ui/card";
 import { Button } from "./ui/button";
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { SERVICES } from '@/lib/services';
 
 export default function ServicesSection() {
     const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay({ delay: 3000 })]);
+    const [isMounted, setIsMounted] = useState(false)
+
+    useEffect(() => {
+        setIsMounted(true)
+    }, [])
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const scrollNext = useCallback((api: any) => api?.scrollNext(), []);    
+    const scrollNext = useCallback((api: any) => api?.scrollNext(), []);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const scrollPrev = useCallback((api: any) => api?.scrollPrev(), []);
+
+    if (!isMounted) return null
 
     return (
         <section className="py-20 px-4 bg-gray-50 dark:bg-gray-900" id="services">

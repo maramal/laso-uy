@@ -1,9 +1,22 @@
 "use client"
 
-import HeroSection from '@/components/hero-section';
-import ServicesSection from '@/components/services-section';
+import dynamic from 'next/dynamic';
+
+import HeroSection from '@/components/hero-section'
 import PromoTeaser from '@/components/promo-teaser';
-import { PackageSection } from '@/components/package-section';
+import { SkeletonServices } from '@/components/skeleton-services';
+import { SkeletonPackage } from '@/components/skeleton-package';
+
+// Importación dinámica
+const ServicesSection = dynamic(() => import('@/components/services-section'), {
+  loading: () => <SkeletonServices />,
+  ssr: false
+})
+
+const PackageSection = dynamic(() => import('@/components/package-section'), {
+  loading: () => <SkeletonPackage />,
+  ssr: false
+})
 
 export default function LandingPage() {
   return (

@@ -43,7 +43,7 @@ function PackageCard({ icon, title, description, refQuery }: PackageProps) {
     );
 }
 
-export function PackageSection() {
+export default function PackageSection() {
     return (
         <section className="py-16 bg-white dark:bg-gray-900 transition-colors">
             <div className="container max-w-7xl mx-auto px-4">

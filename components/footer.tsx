@@ -3,68 +3,53 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Mail, MapPin } from "lucide-react";
-import { useMemo } from "react";
+import { useEffect, useState } from "react";
 
 const siteMapLinks = [
-    {
-        name: 'Servicios',
-        href: '/servicios'
-    },
-    {
-        name: 'Paquetes',
-        href: '/paquetes'
-    },
-    {
-        name: 'Nosotros',
-        href: '/nosotros'
-    },
-    {
-        name: 'Contacto',
-        href: '/contacto'
-    }
-]
+    { name: "Servicios", href: "/servicios" },
+    { name: "Paquetes", href: "/paquetes" },
+    { name: "Nosotros", href: "/nosotros" },
+    { name: "Contacto", href: "/contacto" }
+];
 
 export default function Footer() {
-    // Obtenemos el año actual:
-    const currentYear = useMemo(() => new Date().getFullYear(), []);
+    // Solución 1: Usar useState en lugar de useMemo para evitar hidratación incorrecta
+    const [currentYear, setCurrentYear] = useState("");
+
+    useEffect(() => {
+        setCurrentYear(new Date().getFullYear().toString()); // Se ejecuta solo en el cliente
+    }, []);
 
     return (
         <footer className="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors">
-            {/* Sección principal del Footer */}
             <div className="max-w-7xl mx-auto px-4 py-8">
-                {/* Grid responsivo: 1 columna en móviles, 3 en pantallas md o superiores */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {/* Columna 1: Nombre de la empresa */}
                     <div>
                         <Image
                             src="/late-icon.svg"
                             alt="Logo de LATE en Footer"
                             width={150}
                             height={120}
+                            priority
                         />
                         <p className="text-sm text-gray-600 dark:text-gray-300">
                             Laboratorio Tecnológico
                         </p>
                     </div>
 
-                    {/* Columna 2: Enlaces de navegación */}
                     <div>
                         <h2 className="text-xl font-bold mb-2">Mapa de sitio</h2>
                         <ul className="space-y-2">
                             {siteMapLinks.map((siteMapLink, index) => (
                                 <li key={index}>
-                                <Link
-                                    href={siteMapLink.href}
-                                    className="hover:underline hover:text-blue-600 dark:hover:text-blue-400"
-                                >
-                                    {siteMapLink.name}
-                                </Link>
-                            </li>
+                                    <Link href={siteMapLink.href} className="hover:underline hover:text-blue-600 dark:hover:text-blue-400">
+                                        {siteMapLink.name}
+                                    </Link>
+                                </li>
                             ))}
                         </ul>
                     </div>
 
-                    {/* Columna 3: Información de contacto */}
                     <div>
                         <h2 className="text-xl font-bold mb-2">Contáctanos</h2>
                         <ul className="space-y-3">
@@ -74,24 +59,25 @@ export default function Footer() {
                                     alt="WhatsApp Icon"
                                     width={20}
                                     height={20}
+                                    priority
                                 />
-                                <Link
+                                <a
                                     href="https://wa.me/+59899344948"
                                     target="_blank"
+                                    rel="noopener noreferrer"
                                     className="text-sm text-gray-700 dark:text-gray-300 hover:underline hover:text-blue-600 dark:hover:text-blue-400"
                                 >
                                     +598 99 344 948
-                                </Link>
+                                </a>
                             </li>
                             <li className="flex items-center space-x-2">
                                 <Mail className="text-blue-600 dark:text-blue-400" />
-                                <Link
+                                <a
                                     href="mailto:info@late.uy"
-                                    target="_blank"
                                     className="text-sm text-gray-700 dark:text-gray-300 hover:underline hover:text-blue-600 dark:hover:text-blue-400"
                                 >
                                     info@late.uy
-                                </Link>
+                                </a>
                             </li>
                             <li className="flex items-center space-x-2">
                                 <MapPin className="text-blue-600 dark:text-blue-400" />
@@ -104,7 +90,6 @@ export default function Footer() {
                 </div>
             </div>
 
-            {/* Subfooter */}
             <div className="bg-gray-200 dark:bg-gray-800 py-2 text-center text-sm text-gray-600 dark:text-gray-400">
                 &copy; {currentYear} LATE
             </div>

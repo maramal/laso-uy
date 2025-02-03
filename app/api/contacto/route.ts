@@ -1,9 +1,9 @@
+import { ReactNode } from "react";
 import { NextRequest } from "next/server";
 import { Resend } from "resend"
+import axios from "axios"
 import { InfoTemplate } from "./templates/info-template";
 import { CustomerTemplate } from "./templates/customer-template";
-import { ReactNode } from "react";
-import axios from "axios"
 
 const NO_REPLY_EMAIL = 'LATE <no-responder@late.uy>'
 const INFO_EMAIL = 'LATE <info@late.uy>'

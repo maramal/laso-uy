@@ -30,15 +30,13 @@ const NAV_LINKS: NavigationLink[] = [
 export function NavigationBar() {
     const { theme, setTheme } = useTheme();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-    // Evita el hydration mismatch: no renderiza iconos/texto hasta montar en cliente
     const [mounted, setMounted] = useState(false);
+
     useEffect(() => {
         setMounted(true);
     }, []);
 
     const toggleTheme = () => {
-        // Evitar llamar setTheme antes de “montado”
         if (!mounted) return;
         setTheme(theme === "dark" ? "light" : "dark");
     };
@@ -46,7 +44,7 @@ export function NavigationBar() {
     return (
         <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <div className="container flex h-16 items-center justify-between px-4 sm:px-6">
-                {/* Botón hamburguesa - solo visible en mobile */}
+                {/* Botón hamburguesa */}
                 <div className="md:hidden">
                     <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
                         <SheetTrigger asChild>
@@ -74,9 +72,9 @@ export function NavigationBar() {
                                 ))}
                             </ul>
 
-                            {/* Botón para cambiar tema en menú móvil */}
-                            <div className="mt-6">
-                                {mounted && (
+                            {/* Botón tema móvil - Render condicional completo */}
+                            {mounted && (
+                                <div className="mt-6">
                                     <Button variant="ghost" onClick={toggleTheme} className="w-full">
                                         {theme === "dark" ? (
                                             <>
@@ -90,13 +88,13 @@ export function NavigationBar() {
                                             </>
                                         )}
                                     </Button>
-                                )}
-                            </div>
+                                </div>
+                            )}
                         </SheetContent>
                     </Sheet>
                 </div>
 
-                {/* Branding (Logo) */}
+                {/* Logo */}
                 <Link
                     href="/"
                     className="ml-2 text-lg font-semibold tracking-tight hover:text-primary md:ml-2"
@@ -121,9 +119,9 @@ export function NavigationBar() {
                     </ul>
                 </div>
 
-                {/* Botón para cambiar tema en Desktop */}
-                <div className="ml-auto hidden items-center gap-2 md:flex">
-                    {mounted && (
+                {/* Botón tema Desktop - Render condicional completo */}
+                {mounted && (
+                    <div className="ml-auto hidden items-center gap-2 md:flex">
                         <Button variant="ghost" onClick={toggleTheme} className="flex items-center">
                             {theme === "dark" ? (
                                 <>
@@ -137,8 +135,8 @@ export function NavigationBar() {
                                 </>
                             )}
                         </Button>
-                    )}
-                </div>
+                    </div>
+                )}
             </div>
         </nav>
     );
