@@ -9,7 +9,7 @@ export const metadata = {
 export default function PromotionsPage() {
     const promoInfo = {
         title: "¡Promo Inauguración!",
-        monthlyPrice: "$2500 (pesos uruguayos) mensuales",
+        monthlyPrice: "$3000 (pesos uruguayos) mensuales",
         bulletPoints: [
             "Dominio y Hosting incluidos",
             "Diseño básico ajustable (sin costo de diseño)",

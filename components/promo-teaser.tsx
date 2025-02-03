@@ -32,7 +32,7 @@ export default function PromoTeaser() {
                     </h2>
                     <p className="text-white text-lg">
                         ¡Contrata tu página web básica con dominio, hosting, diseño
-                        básico y posicionamiento en los buscadores! Por solo <strong>$2500 mensuales</strong> para tu negocio.
+                        básico y posicionamiento en los buscadores! Por solo <strong>$3000 mensuales</strong> para tu negocio.
                     </p>
                     <Link href="/promo">
                         <Button
