@@ -62,12 +62,12 @@ export default function Footer() {
                                     priority
                                 />
                                 <a
-                                    href="https://wa.me/+59899344948"
+                                    href="https://wa.me/+59892552793"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="text-sm text-gray-700 dark:text-gray-300 hover:underline hover:text-blue-600 dark:hover:text-blue-400"
                                 >
-                                    +598 99 344 948
+                                    +598 92 552 793
                                 </a>
                             </li>
                             <li className="flex items-center space-x-2">
