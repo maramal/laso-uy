@@ -145,7 +145,7 @@ export default function ContactForm() {
                                 height={20}
                             />
                             <div className="text-gray-700 dark:text-gray-300">
-                                <Link href="https://wa.me/+59899344948" target="_blank">+598 99 344 948</Link>
+                                <Link href="https://wa.me/+59892552793" target="_blank">+598 92 552 793</Link>
                             </div>
                         </div>
                         <div className="flex items-center space-x-4">
