@@ -3,9 +3,9 @@
 import dynamic from 'next/dynamic';
 
 import HeroSection from '@/components/hero-section'
-import PromoTeaser from '@/components/promo-teaser';
 import { SkeletonServices } from '@/components/skeleton-services';
 import { SkeletonPackage } from '@/components/skeleton-package';
+import SimulatorPreview from '@/components/simulator-preview';
 
 // Importación dinámica
 const ServicesSection = dynamic(() => import('@/components/services-section'), {
@@ -25,7 +25,7 @@ export default function LandingPage() {
       <ServicesSection />
       {/*<PortfolioSection />*/}
       {/*<TestimonialsSection />*/}
-      <PromoTeaser />
+      <SimulatorPreview />
       <PackageSection />
     </div>
   );

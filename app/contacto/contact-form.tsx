@@ -68,6 +68,9 @@ export default function ContactForm() {
                 case 'late-completo':
                     message = 'Quiero más información sobre el paquete LATE completo.'
                     break;
+                case 'web-basico':
+                    message = 'Quiero más información sobre el paquete Sitio Web Básico.'
+                    break;
             }
 
             form.setValue('message', message)
